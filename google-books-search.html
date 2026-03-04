@@ -3,41 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Multiple Books Display</title>
+  <title>Book Search</title>
   <style>
     body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; }
-    .book { border: 1px solid #ccc; padding: 15px; margin-bottom: 20px; }
-    img { max-width: 150px; }
-    nav ul { list-style-type: none; padding: 0; }
-    nav li { display: inline; margin-right: 15px; }
+    .book { border: 1px solid #ccc; padding: 15px; margin-bottom: 20px; display: flex; align-items: center; }
+    .book img { max-width: 100px; margin-right: 15px; }
   </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="google-books-book.html">Single Book</a></li>
-        <li><a href="google-books-search.html">Multiple Books</a></li>
-      </ul>
-    </nav>
-  </header>
-
   <h1>Book List</h1>
-  <div id="books-list"></div>
+  <div id="books-container"></div>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
-    $.getJSON("google-books-search.json", function(data) {
-      data.items.forEach(function(book) {
-        $("#books-list").append(
-          "<div class='book'>" +
-            "<h2>" + book.title + "</h2>" +
-            "<p>By: " + book.authors.join(", ") + "</p>" +
-            "<img src='" + book.thumbnail + "' alt='Book image'>" +
-            "<p>" + book.description + "</p>" +
-          "</div>"
-        );
+    $.getJSON("google-books.json", function(data) {
+      data.forEach(book => {
+        $("#books-container").append(`
+          <div class="book">
+            <img src="${book.thumbnail}" alt="${book.title}">
+            <div>
+              <h3><a href="google-books-book.html?id=${book.id}">${book.title}</a></h3>
+              <p>By: ${book.authors.join(", ")}</p>
+            </div>
+          </div>
+        `);
       });
     });
   </script>
