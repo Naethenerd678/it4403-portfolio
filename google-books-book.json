@@ -1,16 +1,7 @@
-[
-  {
-    "id": "1",
-    "title": "The Great Gatsby",
-    "authors": ["F. Scott Fitzgerald"],
-    "description": "A novel set in the Jazz Age...",
-    "thumbnail": "https://example.com/great-gatsby.jpg"
-  },
-  {
-    "id": "2",
-    "title": "1984",
-    "authors": ["George Orwell"],
-    "description": "A dystopian novel about surveillance...",
-    "thumbnail": "https://example.com/1984.jpg"
-  }
-]
+{
+  "id": "1",
+  "title": "The Great Gatsby",
+  "authors": ["F. Scott Fitzgerald"],
+  "description": "A classic novel set in the Jazz Age that explores themes of decadence, idealism, and social upheaval.",
+  "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/a/a0/The_Great_Gatsby_cover_1925.jpg"
+}
