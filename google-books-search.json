@@ -1,35 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Book Search</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; }
-    .book { border: 1px solid #ccc; padding: 15px; margin-bottom: 20px; display: flex; align-items: center; }
-    .book img { max-width: 100px; margin-right: 15px; }
-  </style>
-</head>
-<body>
-  <h1>Book List</h1>
-  <div id="books-container"></div>
-
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script>
-    $.getJSON("google-books.json", function(data) {
-      data.forEach(book => {
-        $("#books-container").append(`
-          <div class="book">
-            <img src="${book.thumbnail}" alt="${book.title}">
-            <div>
-              <h3><a href="google-books-book.html?id=${book.id}">${book.title}</a></h3>
-              <p>By: ${book.authors.join(", ")}</p>
-            </div>
-          </div>
-        `);
-      });
-    });
-  </script>
-</body>
-</html>
-
+[
+  {
+    "id": "1",
+    "title": "The Great Gatsby",
+    "authors": ["F. Scott Fitzgerald"],
+    "description": "A classic novel set in the Jazz Age that explores themes of decadence, idealism, and social upheaval.",
+    "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/a/a0/The_Great_Gatsby_cover_1925.jpg"
+  },
+  {
+    "id": "2",
+    "title": "1984",
+    "authors": ["George Orwell"],
+    "description": "A dystopian novel that delves into totalitarianism, mass surveillance, and the nature of truth.",
+    "thumbnail": "https://upload.wikimedia.org/wikipedia/en/c/c3/1984first.jpg"
+  },
+  {
+    "id": "3",
+    "title": "To Kill a Mockingbird",
+    "authors": ["Harper Lee"],
+    "description": "A novel about racial injustice, moral growth, and compassion in the American South.",
+    "thumbnail": "https://upload.wikimedia.org/wikipedia/en/7/79/To_Kill_a_Mockingbird.JPG"
+  }
+]
