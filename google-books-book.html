@@ -7,22 +7,10 @@
   <style>
     body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; }
     img { max-width: 200px; }
-    nav ul { list-style-type: none; padding: 0; }
-    nav li { display: inline; margin-right: 15px; }
   </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="google-books-book.html">Single Book</a></li>
-        <li><a href="google-books-search.html">Multiple Books</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <h1>Single Book Details</h1>
+  <h1>Book Details</h1>
   <div id="book-container">
     <h2 id="book-title"></h2>
     <p id="book-authors"></p>
@@ -32,11 +20,21 @@
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
-    $.getJSON("google-books-book.json", function(data) {
-      $("#book-title").text(data.title);
-      $("#book-authors").text("By: " + data.authors.join(", "));
-      $("#book-description").text(data.description);
-      $("#book-thumbnail").attr("src", data.thumbnail);
+    // Get the book ID from the URL
+    const params = new URLSearchParams(window.location.search);
+    const bookId = params.get("id");
+
+    $.getJSON("google-books.json", function(data) {
+      const book = data.find(b => b.id === bookId);
+
+      if (book) {
+        $("#book-title").text(book.title);
+        $("#book-authors").text("By: " + book.authors.join(", "));
+        $("#book-description").text(book.description);
+        $("#book-thumbnail").attr("src", book.thumbnail).attr("alt", book.title);
+      } else {
+        $("#book-container").html("<p>Book not found.</p>");
+      }
     });
   </script>
 </body>
