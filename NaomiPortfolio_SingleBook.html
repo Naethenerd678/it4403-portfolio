@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Single Book Display</title>
+  <style>
+    body { font-family: Arial; margin: 40px; line-height: 1.6; }
+    img { max-width: 200px; display: block; margin-bottom: 15px; }
+  </style>
+</head>
+<body>
+  <h1>Single Book Details</h1>
+  <div id="book-container">
+    <h2 id="book-title"></h2>
+    <p id="book-authors"></p>
+    <img id="book-thumbnail" src="" alt="Book Image">
+    <p id="book-description"></p>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $.getJSON("NaomiPortfolio_SingleBook.json", function(data) {
+      $("#book-title").text(data.title);
+      $("#book-authors").text("By: " + data.authors.join(", "));
+      $("#book-description").text(data.description);
+      $("#book-thumbnail").attr("src", data.thumbnail).attr("alt", data.title);
+    });
+  </script>
+</body>
+</html>
